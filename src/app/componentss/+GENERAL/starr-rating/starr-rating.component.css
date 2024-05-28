@@ -1,0 +1,29 @@
+#container {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+
+#container i {
+  color: gray;
+  font-size: 30px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+#container i.bxs-star,
+#container i:hover,
+#container i:hover ~ i {
+  color: #02ace0;
+}
+
+#container.readOnly i {
+  cursor: default;
+}
+
+#container.readOnly i:hover:not(.bxs-star),
+#container.readOnly i:hover ~ i:not(.bxs-star) {
+  color: gray;
+}

@@ -1,0 +1,134 @@
+<app-navhome></app-navhome>
+<div class="cont">
+  <div class="auth-container">
+    <div class="auth-form" *ngIf="!showLoginForm">
+      <div class="logreg-box">
+        <div class="logreg-title">
+          <h2>Sign Up</h2>
+        </div>
+        <form (ngSubmit)="register(form)" #form="ngForm">
+          <!-- General Information Section -->
+          <div class="general-info-section">
+            <div class="input-box">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" [(ngModel)]="registerData.fullName" required>
+            </div>
+            <div class="input-box">
+              <label for="birthDate">Birth Date</label>
+              <input type="date" id="birthDate" name="birthDate" [(ngModel)]="registerData.birthDate">
+            </div>
+            <div class="input-box">
+              <label for="phoneNumber">Phone Number</label>
+              <input type="tel" id="phoneNumber" name="phoneNumber" [(ngModel)]="registerData.phoneNumber">
+            </div>
+          </div>
+          <!-- I am Section -->
+          <div class="input-box">
+            <label for="userType" class="block-label">I am</label>
+            <div class="select-wrapper">
+              <select id="userType" name="userType" [(ngModel)]="registerData.role" (change)="onUserTypeChange($event)">
+                <option value="" hidden>Select...</option>
+                <option value="student">Student</option>
+                <option value="instructor">Instructor</option>
+              </select>
+            </div>
+          </div>
+          <!-- Student Fields -->
+          <div *ngIf="registerData.role === 'student'">
+            <div class="input-box">
+              <label for="grade">Grade</label>
+              <select id="grade" name="grade" [(ngModel)]="registerData.grade"><!---->
+                <option value="highSchool">High School degree</option>
+                <option value="bachelor">Bachelor degree</option>
+                <option value="master">Master degree</option>
+                <option value="engineering">Engineering</option>
+                <option value="doctorate">Doctorate</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <label for="studyPlace">Where do you study?</label>
+              <input type="text" id="studyPlace" name="studyPlace" [(ngModel)]="registerData.studyPlace"><!---->
+            </div>
+            <div class="input-box">
+              <label for="interests">What are you interested in?</label>
+              <select id="interests" name="interests" [(ngModel)]="registerData.interests"><!---->
+                <option value="development">Development</option>
+                <option value="photography">Photography</option>
+                <option value="business">Business</option>
+                <option value="marketing">Marketing</option>
+                <option value="science">Science</option>
+                <option value="trading">Trading</option>
+                <option value="personalDevelopment">Personal Development</option>
+              </select>
+            </div>
+          </div>
+          <!-- Instructor Fields -->
+          <div *ngIf="registerData.role === 'instructor'">
+            <div class="input-box">
+              <label for="category">Category</label>
+              <select id="category" name="category" [(ngModel)]="registerData.category"><!---->
+                <option value="development">Development</option>
+                <option value="photography">Photography</option>
+                <option value="business">Business</option>
+                <option value="marketing">Marketing</option>
+                <option value="science">Science</option>
+                <option value="trading">Trading</option>
+                <option value="personalDevelopment">Personal Development</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <label for="experience">Professional Experience</label>
+              <div class="radio-options">
+                <label>
+                  <input type="radio" id="experience1" name="experience" value="diverseRoles" [(ngModel)]="registerData.experience">Over a decade in secondary and tertiary education.
+                </label>
+                <label>
+                  <input type="radio" id="experience2" name="experience" value="leadership" [(ngModel)]="registerData.experience">Diverse roles in teaching, mentoring, and academia.
+                </label>
+                <label>
+                  <input type="radio" id="experience3" name="experience" value="overADecade" [(ngModel)]="registerData.experience">Leadership in academic institutions, research contributions.
+                </label>
+              </div>
+            </div>
+            <div class="input-box">
+              <label for="profession">Profession</label>
+              <input type="text" id="profession" name="profession" [(ngModel)]="registerData.profession">
+            </div>
+            <div class="input-box">
+              <label for="location">Location</label>
+              <input type="text" id="location" name="location" [(ngModel)]="registerData.location"><!-- -->
+            </div>
+          </div>
+          <!-- Section Divider -->
+          <div class="section-divider"></div>
+          <!-- Account Details Section -->
+          <div class="account-details-section">
+            <div class="input-box">
+              <label for="registerEmail">Email Address</label>
+              <input type="email" id="registerEmail" name="registerEmail" [(ngModel)]="registerData.email" required>
+            </div>
+            <div class="input-box">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" [(ngModel)]="registerData.password" (input)="checkPasswordStrength()" required>
+              <span *ngIf="passwordStrengthMessage !== ''" style="font-size: 13px; font-weight: 800;" [ngStyle]="{'color': passwordStrengthColor}">{{ passwordStrengthMessage }}</span>
+            </div>                      
+            <div class="input-box">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="registerData.confirmPassword" required>
+              <span *ngIf="!passwordsMatch" class="error-message">Passwords do not match.</span>
+            </div>
+          </div>
+          <!-- Checkboxes and Button -->
+          <div class="checkboxx">
+            <label>
+              <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe"> I agree on all terms & conditions
+            </label>
+          </div>          
+          <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <p class="logreg-link">Already have an account? <a (click)="goToLogin()">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

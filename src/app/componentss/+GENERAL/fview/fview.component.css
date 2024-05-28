@@ -1,0 +1,536 @@
+
+
+/* sections */
+
+.fview-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .fview-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .fview-background img {
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.69);
+  }
+  
+  .fview-content {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    margin-left: 20px;
+    width: 60%; /* Adjusted width for each content section */
+    padding: 0 20px;
+    color: #ffffff;
+    text-align: left; /* Aligning text to the right */
+  }
+  
+  .fview-content h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .fview-content p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    text-align: start;
+    color: black;
+    width: 90%;
+  }
+  
+  .fview-content button{
+    font-size: 14px;
+    color: #ffffff;
+    background-color: transparent;
+    padding: 10px 30px;
+    border: 2px solid white;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    border-radius: 10px;
+    transition : 519ms;
+    font-weight: 700;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+  }
+    
+  .fview-content button:hover{ 
+    transition : 519ms;
+    padding: 10px 37px;
+    transform : translateY(-0px);
+    background-color: #ffffff;
+    color: #02ace0;
+    border: none;
+  }
+
+  /* sect2 */
+
+  .statistics-container {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    height: 100vh;
+    height: 50%;
+    margin-top: 50px;
+  }
+  
+  .statistic-box {
+    width: 180px;
+    height: 220px;
+    display: flex;
+    background-color: #02ace0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    cursor: pointer;
+  }
+  
+  /*  hover  */
+  .statistic-box:hover {
+    transform: scale(1.04);
+  }
+
+  
+  .statistic-box i {
+    font-size: 2.8rem;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .statistic-info {
+    text-align: center;
+    color: white;
+    font-size: 16px; /* Adjust as needed */
+    padding: 10px;
+  }
+  
+  .statistic-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .count {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .category-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 100px 20px 40px 20px;
+
+  }
+  
+  .category {
+    width: 25%; /* Adjust as needed */
+    text-align: center;
+    margin-bottom: 80px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .category:hover{
+    transform: scale(1.1);
+  }
+
+  .category i {
+    font-size: 4rem; /* Increase the size of the icon */
+    color: #02ace0;
+  }
+
+  .category-name {
+    display: block;
+    margin-top: 0.5rem; /* Adjust spacing as needed */
+    font-weight: 800;
+  }
+
+  .reviews-container {
+    background-color: #02ace0;
+    text-align: center; 
+    padding: 100px; /* Initial padding for larger screens */
+    box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.69);
+  }
+  
+  .review {
+    display: flex;
+    align-items: center;
+    max-width: 600px; 
+    margin: 0 auto;
+  }
+  
+  .instructor-photo {
+    width: 40%;
+    height: 40%;
+    margin-right: 20px;
+
+    box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.69);
+  }
+  
+  .review-content {
+    flex: 1;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .review-text {
+    text-align: start;
+    font-size: 20px;
+    margin: 0; /* Reset margin */
+  }
+  
+  .instructor-name {
+    font-weight: bold;
+  }
+  
+  .next-review-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: transparent;
+    transition: transform 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px;
+  }
+  
+  .next-review-btn:hover {
+    transform: scale(1.1);
+    background-color: #000;
+    color: #ffe1c3;
+  }
+
+  /*ranking*/
+  .ranking-container {
+    position: relative;
+    height: 100vh;
+  }
+
+  
+  .ranking-background img {
+    width: 100%;
+    
+    box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.69);
+    z-index: 1;
+  }
+  
+  .ranking-content {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    margin-right: 20px;
+    width: 55%; /* Adjusted width for each content section */
+    padding: 0 20px;
+    color: #ffffff;
+    text-align: right; /* Aligning text to the right */
+  }
+  
+  .ranking-content h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .ranking-content p {
+    font-size: 1.3rem;
+    margin-bottom: 35px;
+    text-align: end;
+    color: black;
+  }
+  
+  .ranking-content button {
+    font-size: 14px;
+    color: #ffffff;
+    background-color: transparent;
+    padding: 10px 30px;
+    border: 2px solid white;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    border-radius: 10px;
+    transition: 519ms;
+    font-weight: 700;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    margin-left: auto; 
+  }
+  
+  .ranking-content button:hover { 
+    transition: 519ms;
+    padding: 10px 37px;
+    transform: translateY(-0px);
+    background-color: #ffffff;
+    color: #03a1fc;
+    border: none;
+  }
+
+  .tutorial-area-container {
+    background-color: #02ace0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -160px;
+    padding: 80px;
+    box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.69);
+  }
+  
+  .tutorial-area-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .tutorial-steps {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .tutorial-step {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  .step-title {
+    display: inline-block;
+    color: #ffffff;
+  }
+  
+  .tutorial-step .step-btn {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    color: #ffffff;
+  }
+
+  .tutorial-step .step-btn:hover{
+    transform: scale(1.1);
+  }
+
+  .tutorial-step p a{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .tutorial-step p a:hover{
+    text-decoration: underline;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  
+  .step-description {
+    display: none;
+  }
+
+  /*why*/
+  .whycont {
+    padding: 120px;
+    background-color: transparent;
+    margin-top: -100px;
+    margin-bottom: 160px;
+  }
+  
+  .next-area-title {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  
+  .next-area-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+  }
+  
+  .left-section,
+  .center-section,
+  .right-section {
+    width: 30%; 
+    text-align: center;
+    margin: 0 40px;
+  }
+
+  .left-section i,
+  .center-section i,
+  .right-section i{
+    font-size: 70px;
+    margin-bottom: 30px;
+    color: #02ace0;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .section-text {
+    font-size: 16px;
+  }
+  
+  
+  /* Media Queries */
+  @media screen and (max-width: 768px) {
+      .reviews-container {
+        padding: 50px; /* Adjusted padding for smaller screens */
+      }
+
+      .instructor-photo {
+        width: 30%;
+        height: 30%;
+      }
+      
+      .review-text {
+        font-size: 10px; /* Adjusted font size for smaller screens */
+      }
+
+      .next-review-btn {
+        width: 20px;
+        height: 20px;
+        border: 1px solid black;
+        font-size: smaller;
+      }
+      
+      .statistics-container{
+        display: grid;
+        margin-top: -60px;
+        height: 200%;
+
+      }
+
+      .statistic-box {
+        width: 120px; /* Adjusted width for smaller screens */
+        height: 150px; /* Adjusted height for smaller screens */
+        margin-bottom: 10px;
+      }
+
+      .statistic-box i{
+        font-size: 2rem;
+      }
+
+      .statistic-info h2{
+        font-size: 1.2rem;
+      }
+
+      .statistic-info{
+        font-size: 1.3rem;
+      }
+    
+     
+      .count {
+        font-size: 1.3rem; 
+      }
+
+      .category {
+        width: 50%;
+      }
+
+      .ranking-content {
+        width: 70%; 
+        padding: 0 10px; 
+        top: 5%;
+      }
+
+      .ranking-content h1{
+        font-size: 1.5rem;
+      }
+    
+      .ranking-content p {
+        font-size: 0.7rem;
+      }
+    
+      .ranking-content button {
+        padding: 4px 10px;
+        font-size: 10px;
+      }
+
+      .ranking-content button:hover {
+        padding: 5px 11px;
+        font-size: 10px;
+      }
+
+      .fview-content {
+        width: 60%; 
+        margin-left: 5px;
+        top: 5%;
+      }
+
+      .fview-content h1{
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+    
+      .fview-content p {
+        font-size: 0.7rem;
+      }
+    
+      .fview-content button {
+        padding: 4px 10px;
+        font-size: 10px;
+      }
+
+      .fview-content button:hover {
+        padding: 5px 11px;
+        font-size: 10px;
+      }
+
+      .tutorial-steps {
+        flex-direction: column;
+        align-items: center;
+      }
+
+    .left-section,
+    .center-section,
+    .right-section {
+      width: 90%; 
+      text-align: center;
+      margin-left: 32px;
+      margin-bottom: 20px;
+    }
+
+    .next-area-container{
+      display: grid;
+    }
+    
+  }
+  
+  @media (max-width: 480px) {
+    .category {
+      width: 100%;
+    }
+
+    .fview-content {
+      margin: 0;
+      top: 0;
+    }
+
+    
+  }
+  

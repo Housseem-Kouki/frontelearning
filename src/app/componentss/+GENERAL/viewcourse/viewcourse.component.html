@@ -1,0 +1,70 @@
+<app-navhome></app-navhome>
+
+<div class="view-course">
+  <div class="course-path">
+    <span (click)="navigateToCategory(courseReal.courseCategory)">{{ courseReal.courseCategory }}</span> > {{ courseReal.courseTitle }}
+  </div>
+  
+
+    <div class="course">
+      <img [src]="'http://localhost:9402/uploads/' + courseReal.fileName" alt="Course Image">
+    </div>
+  
+    <div class="course-info">
+      <h1>{{ courseReal.courseTitle }} <app-star-rating [rating]="courseReal.courseRate"></app-star-rating></h1> 
+      <p>{{ courseReal.courseDescription }}</p>
+      <div class="participants"><i class='bx bxs-user'></i> <b> {{ courseReal.participantsCount }}</b> participants</div>
+      <div class="duration"><i class='bx bx-time-five'></i> It takes<b> {{ courseReal.courseDuration }}</b></div>
+      <div class="publish-date"><i class='bx bx-calendar-alt'></i> Published: <b>{{ courseReal.coursePubDate | date }}</b></div>
+
+      <button (click)="Enroll(courseReal.courseId)">Enroll Now</button>
+    </div>
+
+    <div class="publisher">
+        <h2>Publisher</h2>
+        <div class="instructor">
+            <img [src]="course.instructor.avatar" alt="Instructor Avatar">
+            <div class="info">
+                <h3>{{ courseReal.teacher.firstName }}</h3>
+                <p>{{ courseReal.teacher.profession }}</p>
+                <p>{{ courseReal.teacher.coursesCount }} courses | {{ courseReal.teacher.studentsCount }} students</p>
+            </div>
+        </div>
+    </div>
+    
+  
+    <div class="course-content">
+      <h2>Course Content</h2>
+      <div *ngFor="let lesson of courseReal.lessons; let i = index" class="lesson-container">
+          <div class="lesson-title" (click)="toggleContent(i)">
+            {{ lesson.lessonTitle }}
+          </div>
+          
+          <div class="lesson-content" [ngClass]="{'show': lesson.showContent}">
+            <ul *ngIf="lesson.chapters.length > 0">
+              <li *ngFor="let chapter of lesson.chapters">{{ chapter.chapterTitle }}</li>
+            </ul>
+            <ul *ngIf="lesson.quizzes.length > 0">
+              <li *ngFor="let quiz of lesson.quizzes">{{ quiz.quizQuestion }}</li>
+            </ul>
+          </div>
+      </div>
+  </div>     
+  
+    <div class="related-courses">
+      <h2>Related Courses</h2>     
+        <div *ngFor="let relatedCourse of relatedCourses" class="related-course">
+            <div class="related" (click)="goToViewCourse()">
+                <img [src]="relatedCourse.coursePhotoFile" alt="{{ relatedCourse.courseTitle }}">
+                <div class="info">
+                    <h3>{{ relatedCourse.courseTitle }}</h3>
+                    <p>{{ relatedCourse.courseDescription }}</p>
+                    <p>{{ relatedCourse.courseDuration }}</p>
+                    <div class="rate"><app-star-rating [rating]="relatedCourse.courseRate"></app-star-rating></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

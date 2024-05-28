@@ -1,0 +1,93 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  background-color: #03a1fc;
+}
+
+.profile-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  width: 100%;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.69);
+}
+
+.profile-photo {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative; /* Add position relative */
+  
+}
+
+.profile-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+}
+
+.profile-photo button {
+  position: absolute; /* Position the button relative to its parent */
+  bottom: 0; /* Align the button to the bottom of the container */
+  left: 50%; /* Move the button to the center horizontally */
+  transform: translateX(-50%); /* Adjust for center alignment */
+  padding: 8px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.info {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.info label {
+  display: block;
+}
+
+.info input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.profile-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-actions button {
+  padding: 8px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.profile-actions button:hover {
+  background-color: #0056b3;
+}

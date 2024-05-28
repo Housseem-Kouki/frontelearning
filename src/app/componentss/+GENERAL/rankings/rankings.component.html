@@ -1,0 +1,88 @@
+<app-navhome></app-navhome>
+<div class="cnt">
+  <div class="rankings-container">
+      <!--<h2>Rankings</h2>-->
+      <table class="rankings-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Instructor</th>
+            <th>Score</th>
+            <th>Number of Courses</th>
+            <th>Learner Engagement</th>
+            <th>Average Course Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let instructor of realInstructors; let i = index">
+            <td>
+              <ng-container *ngIf="i === 0">
+                <img src="assets/medal1.png" class="rank-icon" alt="Gold Medal">
+              </ng-container>
+              <ng-container *ngIf="i === 1">
+                <img src="assets/medal2.png" class="rank-icon" alt="Silver Medal">
+              </ng-container>
+              <ng-container *ngIf="i === 2">
+                <img src="assets/medal3.png" class="rank-icon" alt="Bronze Medal">
+              </ng-container>
+              <ng-container *ngIf="i > 2">{{ i + 1 }}</ng-container>
+            </td>
+            <td>{{ instructor.name }}</td>
+            <td>{{ instructor.score | number:'1.2-2' }}</td>
+            <td>{{ instructor.coursesAsTeacher.length }}</td>
+            <td>{{ instructor.learnerEngagement }}</td>
+            <td>{{ instructor.averageCourseRating }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+
+
+
+<app-navhome></app-navhome>
+<div class="cnt">
+  <div class="rankings-container">
+      <!--<h2>Rankings</h2>-->
+      <table class="rankings-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Instructor</th>
+            <th>Score</th>
+            <th>Subscribed Learners</th>
+            <th>Number of Courses</th>
+            <th>Learner Engagement</th>
+            <th>Average Course Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let instructor of instructors; let i = index">
+            <td>
+              <ng-container *ngIf="i === 0">
+                <img src="assets/medal1.png" class="rank-icon" alt="Gold Medal">
+              </ng-container>
+              <ng-container *ngIf="i === 1">
+                <img src="assets/medal2.png" class="rank-icon" alt="Silver Medal">
+              </ng-container>
+              <ng-container *ngIf="i === 2">
+                <img src="assets/medal3.png" class="rank-icon" alt="Bronze Medal">
+              </ng-container>
+              <ng-container *ngIf="i > 2">{{ i + 1 }}</ng-container>
+            </td>
+            <td>{{ instructor.name }}</td>
+            <td>{{ instructor.score }}</td>
+            <td>{{ instructor.subscribedLearners }}</td>
+            <td>{{ instructor.numberOfCourses }}</td>
+            <td>{{ instructor.learnerEngagement }}</td>
+            <td>{{ instructor.averageCourseRating }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<app-footer></app-footer>

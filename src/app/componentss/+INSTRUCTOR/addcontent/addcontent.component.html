@@ -1,0 +1,66 @@
+<app-navhome></app-navhome>
+<div class="cont">
+  <div class="create-course-box">
+    <h2>Fill the Course</h2>
+    <form (submit)="onSubmit($event)">
+      <div class="lesson" *ngFor="let lesson of courseLessons; let lessonIndex = index;">
+        <h3>Lesson {{ lessonIndex + 1 }}</h3>
+        <div class="form-group">
+          <label for="lessonTitle{{ lessonIndex }}">Lesson Title : <span style="color: red;">*</span></label>
+          <input type="text" id="lessonTitle{{ lessonIndex }}" class="form-control" [(ngModel)]="lesson.lessonTitle" name="lessonTitle{{ lessonIndex }}" required>
+        </div>
+        <div class="form-group">
+          <label for="lessonDescription{{ lessonIndex }}">Lesson Description : <span style="color: red;">*</span></label>
+          <textarea id="lessonDescription{{ lessonIndex }}" class="form-control" [(ngModel)]="lesson.lessonDescription" name="lessonDescription{{ lessonIndex }}" required></textarea>
+        </div>
+        <button *ngIf="lessonIndex !== 0" type="button" class="btn btn-danger" (click)="deleteLesson(lessonIndex)">Delete Lesson</button>
+        <button *ngIf="!lesson.lessonChapters.length" type="button" class="btn btn-primary" (click)="addChapter(lessonIndex)">Add Chapter</button>
+        <div *ngIf="lesson.lessonChapters.length">
+          <div class="chapter" *ngFor="let chapter of lesson.lessonChapters; let chapterIndex = index;">
+            <h4>Chapter {{ chapterIndex + 1 }}</h4>
+            <div class="form-group">
+              <label for="chapterTitle{{ lessonIndex }}{{ chapterIndex }}">Chapter Title : <span style="color: red;">*</span></label>
+              <input type="text" id="chapterTitle{{ lessonIndex }}{{ chapterIndex }}" class="form-control" [(ngModel)]="chapter.chapterTitle" name="chapterTitle{{ lessonIndex }}{{ chapterIndex }}" required>
+            </div>
+            <div class="form-group">
+              <label for="chapterDescription{{ lessonIndex }}{{ chapterIndex }}">Chapter Description : <span style="color: red;">*</span></label>
+              <textarea id="chapterDescription{{ lessonIndex }}{{ chapterIndex }}" class="form-control" [(ngModel)]="chapter.chapterDescription" name="chapterDescription{{ lessonIndex }}{{ chapterIndex }}" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="chapterVideoLink{{ lessonIndex }}{{ chapterIndex }}">Chapter Video Link : </label>
+              <input type="text" id="chapterVideoLink{{ lessonIndex }}{{ chapterIndex }}" class="form-control" [(ngModel)]="chapter.chapterVideoLink" name="chapterVideoLink{{ lessonIndex }}{{ chapterIndex }}">
+            </div>
+            <button type="button" class="btn btn-danger" (click)="deleteChapter(lessonIndex, chapterIndex)">Delete Chapter</button>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="addChapter(lessonIndex)">Add Chapter</button>
+        </div>
+        <button *ngIf="!lesson.lessonQuizzes.length" type="button" class="btn btn-primary" (click)="addQuiz(lessonIndex)">Add Quiz</button>
+        <div *ngIf="lesson.lessonQuizzes.length">
+          <div class="quiz" *ngFor="let quiz of lesson.lessonQuizzes; let quizIndex = index;">
+            <h4>Quiz {{ quizIndex + 1 }} ({{ quiz.quizScore }}%)</h4>
+            <div class="form-group">
+              <label for="quizQuestion{{ lessonIndex }}{{ quizIndex }}">Question : <span style="color: red;">*</span></label>
+              <input type="text" id="quizQuestion{{ lessonIndex }}{{ quizIndex }}" class="form-control" [(ngModel)]="quiz.quizQuestion" name="quizQuestion{{ lessonIndex }}{{ quizIndex }}" required>
+            </div>
+            <div class="form-group">
+              <label for="quizDescription{{ lessonIndex }}{{ quizIndex }}">Description : <span style="color: red;">*</span></label>
+              <textarea id="quizDescription{{ lessonIndex }}{{ quizIndex }}" class="form-control" [(ngModel)]="quiz.quizDescription" name="quizDescription{{ lessonIndex }}{{ quizIndex }}" required></textarea>
+            </div>
+            <div class="form-group" *ngFor="let answer of quiz.answers; let answerIndex = index;">
+              <label for="quizAnswer{{ lessonIndex }}{{ quizIndex }}{{ answerIndex }}">Answer : <span style="color: red;">*</span></label>
+              <input type="text" id="quizAnswer{{ lessonIndex }}{{ quizIndex }}{{ answerIndex }}" class="form-control" [(ngModel)]="answer.text" name="quizAnswer{{ lessonIndex }}{{ quizIndex }}{{ answerIndex }}" required>
+              <input type="radio" [(ngModel)]="answer.correct" name="correctAnswer{{ lessonIndex }}{{ quizIndex }}" [value]="answerIndex"> Correct
+              <button type="button" class="btn btn-danger" style="padding: 10px; font-size: 12px; margin-top: 5px;" *ngIf="answerIndex > 1" (click)="deleteAnswer(lessonIndex, quizIndex, answerIndex)">Delete</button>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="addAnswer(lessonIndex, quizIndex)">Add Answer</button>
+            <button type="button" class="btn btn-danger" (click)="deleteQuiz(lessonIndex, quizIndex)">Delete Quiz</button>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="addQuiz(lessonIndex)">+ Add Quiz</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addLesson()">Add Lesson</button>
+      <button type="submit" class="bttn">Add Content</button>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>

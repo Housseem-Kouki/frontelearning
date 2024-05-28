@@ -1,0 +1,141 @@
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #03a1fc;
+}
+
+.auth-container {
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.69);
+  margin: 70px;
+}
+  
+  .logreg-title {
+    margin-bottom: 10px;
+    color: black;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .logreg-title h2 {
+    font-size: 32px;
+  }
+  
+  .logreg-title p {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    border-bottom: 2px solid black;
+  }
+  
+  .input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    padding-right: 25px;
+  }
+  
+  .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+  }
+  
+  .input-box input:focus ~ label,
+  .input-box input:valid ~ label{
+    top: -5px;
+  }
+  
+  .rem-forg {
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+    margin: 15px 0 30px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .rem-forg label input {
+    accent-color: black;
+    margin-right: 3px;
+  }
+  
+  .rem-forg a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .rem-forg a:hover {
+    text-decoration: underline;
+    color: black;
+  }
+  
+  .btn {
+    width: 100%;
+    height: 45px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .7);
+    cursor: pointer;
+    font-size: 16px;
+    background-color: black;
+    color: #ffffff;
+    font-weight: 600;
+    transition: transform 0.3s;
+  }
+  
+  .btn:hover {
+    color: black;
+    background-color: transparent;
+    transform: scale(1.02);
+  }
+  
+  .logreg-link {
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 15px;
+  }
+  
+  .logreg-link a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .logreg-link a:hover {
+    text-decoration: underline;
+    color: black; 
+    cursor: pointer; 
+  }
+
+  .error-message{
+    color: red;
+    text-align: center;
+    font-weight: 700;
+  }

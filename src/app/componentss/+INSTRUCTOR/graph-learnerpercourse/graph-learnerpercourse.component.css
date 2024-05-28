@@ -1,0 +1,7 @@
+.graph-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 20%; /* Ensure the container takes up the full height of its parent */
+  }

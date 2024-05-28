@@ -1,0 +1,38 @@
+<nav class="navbar">
+
+  <div class="logo" (click)="userRole !== 'admin' ? goToFView() : null">Quarini</div>
+
+  <div class="right-buttons">
+
+    <!-- Default -->
+    <ng-container *ngIf="!userRole">
+      <button class="nav-button" (click)="goToCourses()">Courses</button>
+      <button class="nav-button" (click)="goToLogin()">Login</button>
+      <button class="nav-button" (click)="goToSignUp()">Sign Up</button>
+    </ng-container>
+
+    <!-- Learner -->
+    <ng-container *ngIf="userRole === 'learner'">
+      <button class="nav-button" (click)="goToCourses()">Courses</button>
+      <button class="nav-button" (click)="goToMyCourses()">My Courses</button>
+      <button class="nav-button" (click)="goToProfile()">Profile</button>
+      <button class="nav-button" (click)="logout()">Logout</button>
+    </ng-container>
+
+    <!-- Instructor -->
+    <ng-container *ngIf="userRole === 'instructor'">
+      <button class="nav-button" (click)="goToFView()">Home</button>
+      <button class="nav-button" (click)="goToInstructorDashboard()">Dashboard</button>
+      <button class="nav-button" (click)="goToProfile()">Profile</button>
+      <button class="nav-button" (click)="logout()">Logout</button>
+    </ng-container>
+
+    <!-- Admin -->
+    <ng-container *ngIf="userRole === 'admin'">
+      <button class="nav-button" (click)="goToAdminDashboard()">Dashboard</button>
+      <button class="nav-button" (click)="goToChangePassword()">Change Password</button><!---->
+      <button class="nav-button" (click)="logout()">Logout</button><!---->
+    </ng-container>
+
+  </div>
+</nav>

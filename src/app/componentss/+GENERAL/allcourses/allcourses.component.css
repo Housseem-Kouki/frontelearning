@@ -1,0 +1,148 @@
+.cnt {
+  background-color: #02ace0;
+  width: 100%;
+  min-height: 100vh; /* Set a minimum height to prevent container from resizing */
+  z-index: 1;
+}
+
+.all-courses {
+  padding: 40px;
+  margin-left: 40px;
+  background-size: cover;
+  background-position: center;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 70px;
+  align-items: center;
+  position: relative; /* Add a search icon inside the input field */
+}
+
+.search-bar::before {
+  content: '\f002'; /* Font Awesome search icon */
+  font-family: 'Font Awesome 5 Free';
+  font-size: 16px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #02ace0;
+}
+
+.search-bar input {
+  width: 50%;
+  padding: 10px 20px; /* Add some padding to accommodate the search icon */
+  font-size: 16px;
+  border: 2px solid #000000;
+  border-radius: 50px;
+  transition: transform 0.3s;
+  box-shadow: 0px 4px 18px 3px rgba(0,0,0,0.4);
+}
+
+.search-bar input:hover {
+  transform: scale(1.01);
+}
+
+.course-category {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #ffffff; /* Add a horizontal line to separate categories */
+}
+
+.course-category h2 {
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.course-list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.polaroid-card {
+  width: 220px;
+  height: 300px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+  transform: rotate(-2deg);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.polaroid-card:hover{
+  transform: scale(1.04);
+}
+
+.polaroid-card img {
+  width: 100%;
+  height: 60%;
+  display: block;
+}
+
+.polaroid-card .container {
+  text-align: center;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.polaroid-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #02ace0;
+}
+
+.polaroid-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.next-btn {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-weight: 800;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+  font-size: 17px;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: transparent;
+  box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease-in-out;
+}
+
+.next-btn:hover {
+  background-color: #ffffff;
+  color: #03a1fc;
+  transform: translateY(-50%) scale(1.1); /* Add a subtle scale effect on hover */
+}
+
+.no-results-message {
+  text-align: start;
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+.no-results-message p {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}

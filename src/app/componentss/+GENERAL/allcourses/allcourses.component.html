@@ -1,0 +1,38 @@
+<!-- allcourses.component.html -->
+<app-navhome></app-navhome>
+
+<div class="cnt">
+  <div class="all-courses">
+    <div class="search-bar">
+      <input type="text" placeholder="Search courses..." [(ngModel)]="searchText">
+    </div>
+    <ng-container *ngIf="filteredCourses().length > 0; else noResults">
+      <div class="course-categories">
+        <div *ngFor="let category of filteredCourses()" class="course-category">
+          <h2>{{ category.title }}</h2>
+          <div class="course-list">
+            <div *ngFor="let course of category.courses" class="polaroid-card" (click)="goToViewCourse(course.courseId)">
+              <img [src]="'http://localhost:9402/uploads/' + course.fileName" alt="Course Image">
+              <div class="container">
+                <h3>{{ course.courseTitle }}</h3>
+                <p>Duration: {{ course.courseDuration }}</p>
+                <!--
+                <app-star-rating [rating]="course.courseLevel"></app-star-rating>
+                -->
+              </div>
+            </div>
+            <button class="next-btn" *ngIf="!searchText" (click)="nextCourse(category)">></button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noResults>
+      <div class="no-results-message">
+        <p>We're sorry, we couldn't find any results for "{{ searchText }}".</p>
+        <p>Try to narrow down your search.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<app-footer></app-footer>

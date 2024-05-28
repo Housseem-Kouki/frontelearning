@@ -1,0 +1,56 @@
+<app-navhome></app-navhome>
+
+<div class="course-interface">
+  <!-- Sidebar Menu -->
+  <div class="sidebar" [ngClass]="{'hiding': isSidebarHidden}">
+    <ul>
+      <li *ngFor="let lesson of courseReal.lessons">
+        <h3>{{ lesson.lessonTitle }}</h3>
+        <ul class="test">
+          <li *ngFor="let chapter of lesson.chapters">
+            <a (click)="displayContent(chapter)">{{ chapter.chapterTitle }}</a>
+          </li>
+          <li *ngFor="let quiz of lesson.quizzes">
+            <a (click)="displayContent(quiz)">{{ quiz.quizQuestion }}</a> <!-- Afficher le titre du quiz -->
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Content Display Section -->
+  <div class="content-display" [ngClass]="{'full-width': isSidebarHidden}">
+    <button class="toggle-sidebar-btn" (click)="toggleSidebar()">
+      <i class="bx bx-menu"></i>
+    </button>
+    <h2>{{ selectedContent?.chapterTitle || selectedContent?.quiz?.quizQuestion }}</h2>
+    <div *ngIf="selectedContent?.chapterDescription">
+      <p>{{ selectedContent.chapterDescription }}</p>
+      <div class="iframe-container">
+        <iframe [src]="selectedContent.chapterVideo | safeUrl" frameborder="0" allowfullscreen></iframe>
+        
+
+      </div>
+    </div>
+    <div *ngIf="selectedContent?.quiz" class="quizdisplay">
+      <p>{{ selectedContent.quiz.quizDescription }}</p> <!-- Afficher la description du quiz -->
+      <div *ngFor="let answerr of selectedContent.quiz.answers" class="answer">
+        <input type="radio" name="quizAnswer" [value]="answerr.answer || 'N/A'" (change)="answers[selectedContent?.quiz?.quizQuestion] = answerr.answer || 'N/A'">
+        <label>{{ answerr.answer || 'N/A' }}</label> <!-- Afficher les réponses ou 'N/A' si la réponse est null -->
+      </div>
+      <button (click)="submitQuiz()" style="margin-top: 20px;">Submit Quiz</button>
+    </div>
+  </div>  
+
+  <div *ngIf="showRateBox" class="rate-box">
+    <div class="center-box">
+      <button class="close-button" (click)="closeRateBox()">&#x2715;</button>
+      <h2>Rate our course</h2>
+      <p>In order to get your certificate, you need to rate this course.</p>
+      <app-starr-rating (ratingChange)="onRateChange($event)"></app-starr-rating>
+      <button class="btn" (click)="onSubmit()">Submit Rate</button>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,156 @@
+  .top-courses {
+    text-align: center;
+    padding: 80px;
+    background-color: #02ace0;
+    box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.69);
+  }
+
+  .top-courses h2{
+    margin-bottom: 60px;
+    color: #ffffff;
+    font-size: 35px;
+  }
+  
+  .course-list {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+  }
+  
+  .polaroid-card {
+    width: 220px;
+    height: 300px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    transform: rotate(-2deg);
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .polaroid-card:hover{
+    transform: scale(1.04);
+  }
+  
+  .polaroid-card img {
+    width: 100%;
+    height: 60%;
+    display: block;
+  }
+  
+  .polaroid-card .container {
+    text-align: center;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .polaroid-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #000000;
+  }
+  
+  .polaroid-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
+  .prev-btn{
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 50%;
+    margin: 0 20px 0px 20px;
+    font-size: 17px;
+    font-weight: 800;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .next-btn {
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 50%;
+    margin: 0 20px 0px 20px;
+    font-size: 17px;
+    font-weight: 800;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .prev-btn:hover, .next-btn:hover {
+    background-color: #ffffff;
+    color: #02ace0;
+    transform: scale(1.1);
+  }
+
+  @media screen and (max-width: 768px) {
+
+    .top-courses{
+      padding: 30px;
+    }
+
+    .polaroid-card {
+      width: 110px;
+      height: 150px;
+    }
+  
+    .prev-btn,
+    .next-btn {
+      width: 30px; /* Adjust width to be relative to the viewport width */
+      height: 30px; /* Adjust height to be relative to the viewport width */
+      font-size: 0.5rem;
+    }
+
+    .polaroid-card h3 {
+      font-size: 0.5rem;
+    }
+
+    .polaroid-card p{
+      font-size: 0.3rem;
+    }
+
+  }
+
+  @media screen and (max-width: 480px) {
+
+    .top-courses{
+      padding: 0;
+    }
+
+    .polaroid-card {
+      width: 55px;
+      height: 75px;
+    }
+  
+    .prev-btn,
+    .next-btn {
+      width: 15px; /* Adjust width to be relative to the viewport width */
+      height: 15px; /* Adjust height to be relative to the viewport width */
+      font-size: 0.3rem;
+    }
+
+    .polaroid-card h3 {
+      font-size: 0.2rem;
+    }
+
+    .polaroid-card p{
+      font-size: 0.2rem;
+    }
+
+  }
+  

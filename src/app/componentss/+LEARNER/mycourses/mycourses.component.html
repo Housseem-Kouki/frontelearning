@@ -1,0 +1,45 @@
+
+<app-navhome></app-navhome>
+<div class="container">
+    <div class="courses-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="img">Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Progress</th>
+                    <th>Certificate</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courseReal">
+                    <td><img [src]="'http://localhost:9402/uploads/' + course.fileName" alt="Course Image"></td>
+                    <td>{{ course.courseTitle }}</td>
+                    <td>{{ course.courseCategory }}</td>
+                    <td>
+                        <ng-container *ngIf="course.progress == 0; else progressText">
+                            <button (click)="proceedToCourse(course)">Processed</button>
+                        </ng-container>
+                        <ng-template #progressText>
+                            Completed
+                        </ng-template>
+                    </td>
+
+                    <td>
+                        <ng-container *ngIf="course.progress == 1">
+                        <button (click)="generateCertificate(course)">Download</button>
+                        </ng-container>
+                        <ng-container *ngIf="course.progress == 0">
+                        Not Available
+                        </ng-container>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<app-footer></app-footer>
+

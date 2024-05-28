@@ -1,0 +1,14 @@
+
+<div class="cont">
+    <div class="feedback-container">
+        <div class="feedback">
+          <div class="learner-photo"><img class="learner-photo" [src]="getCurrentReview().photo" alt="Learner Photo">
+          </div>
+          <h3 class="learner-name">{{ getCurrentReview().name }}</h3>
+          <p class="feedback-text">"{{ getCurrentReview().feedback }}"</p>
+        </div>
+        <button class="next-btn" (click)="nextReview()">></button>
+    </div>
+</div>
+
+  

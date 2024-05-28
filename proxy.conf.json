@@ -1,0 +1,32 @@
+{
+    "/rest": {
+      "target": "http://localhost:9402",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/rest/course/": {
+      "target": "http://localhost:9402",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/rest/auth/": {
+      "target": "http://localhost:9402",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/uploads/": {
+      "target": "http://localhost:9402",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/rest/user/": {
+      "target": "http://localhost:9402",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

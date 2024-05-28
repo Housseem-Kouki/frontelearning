@@ -1,0 +1,305 @@
+<!-- fview.component.html -->
+<app-navhome></app-navhome>
+
+<ng-container *ngIf="!userRole">
+    <div class="fview-container">
+    <!-- First section with background image -->
+      <div class="fview-background">
+        <img src="assets/bckg.jpg" alt="Background Image">
+      </div>
+      <div class="fview-content">
+        <h1>Elevate your potential with Quarini</h1>
+        <p>At <b>Quarini</b>, we are committed to empowering learners with the knowledge and skills they need to succeed in today's fast-paced world. <b>Join us</b> on our journey to redefine <b>online education.</b></p>
+        <button mat-raised-button color="primary" (click)="goToSignup()">Start Now</button>
+      </div>
+    </div>
+  
+  
+    <!-- Second section with statisti cs -->
+    <div class="statistics-container">
+      <div class="statistic-box">
+        <i class='bx bxs-user'></i>
+        <div class="statistic-info">
+          <h2>Learners</h2>
+          <p class="count">{{ learnerCount }}</p>
+        </div>
+      </div>
+      <div class="statistic-box">
+        <i class='bx bx-user'></i>
+        <div class="statistic-info">
+          <h2>Instructors</h2>
+          <p class="count">{{ instructorCount }}</p>
+        </div>
+      </div>
+      <div class="statistic-box">
+        <i class='bx bx-book'></i>
+        <div class="statistic-info">
+          <h2>Courses</h2>
+          <p class="count">{{ courseCount }}</p>
+        </div>
+      </div>
+      <div class="statistic-box">
+        <i class='bx bx-category'></i>
+        <div class="statistic-info">
+          <h2>Categories</h2>
+          <p class="count">{{ categoryCount }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <app-top-courses></app-top-courses>
+  
+    
+    
+    <div class="category-container">
+      <div class="category" *ngFor="let category of categories" (click)="navigateToCategory(category.name)">
+        <i class="bx" [class]="category.icon"></i>
+        <span class="category-name" >{{ category.name }}</span>
+      </div>
+    </div>
+  
+    <div class="ranking-container">   
+      <div class="ranking-background">
+        <img src="assets/bckgg.jpg" alt="Background Image">
+      </div>
+      <div class="ranking-content">
+        <h1>Meet Our Elite Educators</h1>
+        <p>At <b>Quarini</b>, we believe in recognizing excellence. Our <b>ranking system</b> highlights the best <b>instructors</b> based on various factors such as teaching quality, student engagement, and course <b>effectiveness.</b></p>
+        <button mat-raised-button color="primary" (click)="goToExplore()">Explore</button>
+      </div>
+    </div>
+  
+    <!--why?--> 
+    <div class="whycont">
+      <h1 class="next-area-title">Why Quarini?</h1>
+      <div class="next-area-container">
+        <div class="left-section">
+          <i class='bx bxs-magic-wand'></i>
+          <h2 class="section-title">Unlock the Magic of Learning</h2>
+          <p class="section-text">Experience the enchantment of Quarini's courses, where learning becomes a magical journey of discovery.</p>
+        </div>
+    
+        <div class="center-section">
+          <i class='bx bxs-hot'></i>
+          <h2 class="section-title">Ignite Your Passion</h2>
+          <p class="section-text">Set your learning journey ablaze with Quarini's dynamic courses, designed to ignite your passion for knowledge.</p>
+        </div>
+      
+        <div class="right-section">
+          <i class='bx bxs-trophy' ></i>
+          <h2 class="section-title">Develop, Grow, and Win</h2>
+          <p class="section-text">Achieve victory through personal growth on Quarini's platform, where every course is a step towards success.</p>
+        </div>
+      </div>
+    </div>
+  
+    <!--how?--> 
+    <div class="tutorial-area-container">
+      <h2 class="tutorial-area-title">How to Start?</h2>
+      <div class="tutorial-steps">
+        <div class="tutorial-step">
+          <button id="step1-button" class="step-btn" (click)="toggleDescription('step1')">◖Explore Our Courses◗</button>
+          <p class="step-description" id="step1-description"><a (click)="goToCourses()">Browse</a> through our extensive catalog of courses covering a wide range of topics. </p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step3-button" class="step-btn" (click)="toggleDescription('step3')">◖Sign Up for Free as Student or an instructor◗</button>
+          <p class="step-description" id="step3-description"><a (click)="goToSignup()">Register</a> for a Quarini student or instructor account to get started.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step9-button" class="step-btn" (click)="toggleDescription('step9')">◖Consult top ranked instructors◗</button>
+          <p class="step-description" id="step9-description"><a (click)="goToExplore()">Explore</a> our top-ranked instructors to find the perfect mentor for your learning journey.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step7-button" class="step-btn" (click)="toggleDescription('step7')">◖Enroll and Start Learning◗</button>
+          <p class="step-description" id="step7-description">Enroll in your chosen course with just a few clicks.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step8-button" class="step-btn" (click)="toggleDescription('step8')">◖Earn Certificates of Completion◗</button>
+          <p class="step-description" id="step8-description">Complete your course requirements and earn certificates of completion to showcase your new skills and knowledge.</p>
+        </div>
+      </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="userRole === 'learner'">
+
+    <app-top-courses></app-top-courses>
+
+    <div class="category-container">
+      <div class="category" *ngFor="let category of categories" (click)="navigateToCategory(category.name)">
+        <i class="bx" [class]="category.icon"></i>
+        <span class="category-name" >{{ category.name }}</span>
+      </div>
+    </div>
+
+    <div class="ranking-container">   
+      <div class="ranking-background">
+        <img src="assets/bckgg.jpg" alt="Background Image">
+      </div>
+      <div class="ranking-content">
+        <h1>Meet Our Elite Educators</h1>
+        <p>At <b>Quarini</b>, we believe in recognizing excellence. Our <b>ranking system</b> highlights the best <b>instructors</b> based on various factors such as teaching quality, student engagement, and course <b>effectiveness.</b></p>
+        <button mat-raised-button color="primary" (click)="goToExplore()">Explore</button>
+      </div>
+    </div>
+
+    <!-- Second section with statistics -->
+    <div class="statistics-container" style="margin-top: 60px; margin-bottom: 180px;">
+      <div class="statistic-box">
+        <i class='bx bxs-user'></i>
+        <div class="statistic-info">
+          <h2>Learners</h2>
+          <p class="count">{{ learnerCount }}</p>
+        </div>
+      </div>
+      <div class="statistic-box">
+        <i class='bx bx-user'></i>
+        <div class="statistic-info">
+          <h2>Instructors</h2>
+          <p class="count">{{ instructorCount }}</p>
+        </div>
+      </div>
+      <div class="statistic-box">
+        <i class='bx bx-book'></i>
+        <div class="statistic-info">
+          <h2>Courses</h2>
+          <p class="count">{{ courseCount }}</p>
+        </div>
+      </div>
+      <div class="statistic-box">
+        <i class='bx bx-category'></i>
+        <div class="statistic-info">
+          <h2>Categories</h2>
+          <p class="count">{{ categoryCount }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!--what?-->
+    <div class="tutorial-area-container">
+      <h2 class="tutorial-area-title">As a Learner</h2>
+      <div class="tutorial-steps">
+        <div class="tutorial-step">
+          <button id="step1-button" class="step-btn" (click)="toggleDescription('step1')">◖Explore Courses◗</button>
+          <p class="step-description" id="step1-description"><a (click)="goToCourses()">Browse</a> through our extensive catalog of courses covering a wide range of topics to find the perfect learning experience for you.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step2-button" class="step-btn" (click)="toggleDescription('step2')">◖Rate Courses◗</button>
+          <p class="step-description" id="step2-description">Share your feedback and experiences by rating the courses you've completed to help other learners make informed decisions.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step3-button" class="step-btn" (click)="toggleDescription('step3')">◖Earn Certificates◗</button>
+          <p class="step-description" id="step3-description">Complete course requirements and earn certificates of completion to validate your new skills and knowledge.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step4-button" class="step-btn" (click)="toggleDescription('step4')">◖View Instructor Rankings◗</button>
+          <p class="step-description" id="step4-description"><a (click)="goToExplore()">Explore</a> our instructor rankings to discover top-rated instructors and find the perfect mentor for your learning journey.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step5-button" class="step-btn" (click)="toggleDescription('step5')">◖Track Your Progress◗</button>
+          <p class="step-description" id="step5-description">Monitor your learning progress and achievements to stay motivated and reach your educational goals.</p>
+        </div>
+      </div>
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="userRole === 'instructor'">
+    <div class="ranking-container">   
+      <div class="ranking-background">
+        <img src="assets/bckgg.jpg" alt="Background Image">
+      </div>
+      <div class="ranking-content">
+        <h1>Have a Look at Your Peers</h1>
+        <p>At <b>Quarini</b>, we believe in recognizing excellence. Our <b>ranking system</b> highlights the best <b>instructors</b> based on various factors such as teaching quality, student engagement, and course <b>effectiveness.</b></p>
+        <button mat-raised-button color="primary" (click)="goToExplore()">Explore</button>
+      </div>
+    </div>
+  
+    <!-- Second section with statistics -->
+    <div class="statistics-container" style="margin-top: 60px; margin-bottom: 180px;">
+      <div class="statistic-box">
+        <i class='bx bxs-user'></i>
+        <div class="statistic-info">
+          <h2>Learners</h2>
+          <p class="count">{{ learnerCount }}</p>
+        </div>
+      </div>
+      <div class="statistic-box">
+        <i class='bx bx-user'></i>
+        <div class="statistic-info">
+          <h2>Instructors</h2>
+          <p class="count">{{ instructorCount }}</p>
+        </div>
+      </div>
+      <div class="statistic-box">
+        <i class='bx bx-book'></i>
+        <div class="statistic-info">
+          <h2>Courses</h2>
+          <p class="count">{{ courseCount }}</p>
+        </div>
+      </div>
+      <div class="statistic-box">
+        <i class='bx bx-category'></i>
+        <div class="statistic-info">
+          <h2>Categories</h2>
+          <p class="count">{{ categoryCount }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <!--how?--> 
+    <div class="tutorial-area-container">
+      <h2 class="tutorial-area-title">As Instructor</h2>
+      <div class="tutorial-steps">
+        <div class="tutorial-step">
+          <button id="step1-button" class="step-btn" (click)="toggleDescription('step1')">◖Create Your Course◗</button>
+          <p class="step-description" id="step1-description"><a (click)="goToCreateCourse()">Start</a> creating your own course and share your expertise with students.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step2-button" class="step-btn" (click)="toggleDescription('step2')">◖Customize Course Content◗</button>
+          <p class="step-description" id="step2-description">Tailor your course content to suit your teaching style and the needs of your students.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step3-button" class="step-btn" (click)="toggleDescription('step3')">◖Engage with Students◗</button>
+          <p class="step-description" id="step3-description">Interact with your students through discussions, feedback, and rating.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step4-button" class="step-btn" (click)="toggleDescription('step4')">◖Track Your Course Performance◗</button>
+          <p class="step-description" id="step4-description"><a (click)="goToDash()">Monitor</a> your course's progress and performance metrics to optimize student engagement and satisfaction.</p>
+        </div>
+        <div class="tutorial-step">
+          <button id="step5-button" class="step-btn" (click)="toggleDescription('step5')">◖Ranking System◗</button>
+          <p class="step-description" id="step5-description"><a (click)="goToExplore()">Track</a> your and your peers' performance, showcase your teaching prowess, and gain recognition among students.</p>
+        </div>      
+      </div>
+    </div>
+  
+    <!--why?--> 
+    <div class="whycont" style="margin-top: 50px;">
+      <h1 class="next-area-title">Why Quarini?</h1>
+      <div class="next-area-container">
+        <div class="left-section">
+          <i class='bx bxs-magic-wand'></i>
+          <h2 class="section-title">Empower your teaching style</h2>
+          <p class="section-text">Launch courses that reflect your approach, maintaining full autonomy over your content.</p>
+        </div>
+    
+        <div class="center-section">
+          <i class='bx bxs-hot'></i>
+          <h2 class="section-title">Ignite curiosity in students</h2>
+          <p class="section-text">Transmit your knowledge and inspire learners to delve into their interests, and acquire new abilities.</p>
+        </div>
+      
+        <div class="right-section">
+          <i class='bx bxs-trophy' ></i>
+          <h2 class="section-title">Attain recognition</h2>
+          <p class="section-text">Expand your professional network, enrich your expertise, and earn revenue for each paid enrollment.</p>
+        </div>
+      </div>
+    </div>
+
+</ng-container>
+
+<app-footer></app-footer>
+

@@ -1,0 +1,58 @@
+<app-navhome></app-navhome>
+<div class="cont">
+  <div class="create-course-box">
+    <h2>Create Course</h2>
+    <form [formGroup]="courseCreationForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="courseTitle">Title : <span style="color: red;">*</span></label>
+          <input type="text" class="form-control" id="courseTitle" formControlName="courseTitle">
+        </div>
+        <div class="form-group">
+          <label for="courseCategory">Category : <span style="color: red;">*</span></label>
+          <select class="form-control" id="courseCategory" formControlName="courseCategory">
+            <option value="programming">Programming</option>
+            <option value="business">Business</option>
+            <option value="photography">Photography</option>
+            <option value="music">Music</option>
+            <option value="personal development">Personal Development</option>
+            <option value="trading">Trading</option>
+            <option value="marketing">Marketing</option>
+            <option value="science">Science</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="courseDescription">Description : <span style="color: red;">*</span></label>
+        <textarea class="form-control" id="courseDescription" formControlName="courseDescription" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="coursePhotoFile">Course Photo : </label>
+        <input type="file" id="coursePhotoFile" (change)="onFileChange($event)" />
+      </div>
+      <div class="form-group input-group">
+        <label for="courseDuration">Duration : <span style="color: red;">*</span></label>
+        <div class="input-group">
+          <input type="number" class="form-control" id="courseDuration" formControlName="courseDuration">
+          <select class="form-control" id="durationUnit">
+            <option value="hours">Hours</option>
+            <option value="days">Days</option>
+            <option value="weeks">Weeks</option> <!-- Corrected value for weeks -->
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="courseLevel">Level : <span style="color: red;">*</span></label>
+        <select class="form-control" id="courseLevel" formControlName="courseLevel">
+          <option value="1">Beginner</option>
+          <option value="2">Intermediate</option>
+          <option value="3">Advanced</option>
+        </select>
+      </div>
+      <div class="button-row">
+        <button type="submit" class="btn">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>

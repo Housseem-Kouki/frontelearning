@@ -1,0 +1,66 @@
+.cnt {
+    width: 100%;
+    min-height: 70vh; /* Set a minimum height to prevent container from resizing */
+    z-index: 1;
+  }
+
+/* Container Styles */
+.rankings-container {
+    margin-top: 50px;
+    padding: 50px;
+}
+
+/* Table Styles */
+.rankings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rank-icon {
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+}
+
+/* Header Row Styles */
+.rankings-table th {
+    background-color: #ffffff;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+}
+
+/* Data Row Styles */
+.rankings-table td {
+    padding: 12px;
+    border-bottom: 1px solid #000000;
+}
+
+/* Highlight Top 3 Rows */
+.rankings-table tr.highlighted {
+    background-color: #02ace0;
+}
+
+/* Hover Effect */
+.rankings-table tr:hover {
+    background-color: #02ace0;
+}
+
+/* Rank Column Styles */
+.rankings-table td:first-child {
+    font-weight: bold;
+}
+
+/* Dark Theme Styles */
+.dark-mode .rankings-table th {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+.dark-mode .rankings-table td {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+.dark-mode .rankings-table tr.highlighted {
+    background-color: #3d3d3d;
+}

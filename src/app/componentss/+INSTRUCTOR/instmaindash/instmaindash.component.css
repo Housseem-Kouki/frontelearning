@@ -1,0 +1,222 @@
+.container{
+  padding: 100px;
+}
+
+.chart-cards-container {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.app-chart {
+  flex: 1;
+  margin: 0 10px 40px 200px;
+}
+
+.cards-container {
+  display: grid;
+  justify-content: flex-end;
+  margin: 0 100px 20px 10px;
+  flex: 1;
+}
+
+.dashboard-card {
+  width: 200px;
+  height: 150px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 20px 40px;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-card:hover {
+  cursor: pointer;
+  transform: scale(1.04);
+}
+
+.dashboard-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.dashboard-card p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+/*.todo-list-container {
+  width: calc(100% - 440px); 
+  margin: 0 auto; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.todo-list {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center; 
+  margin-bottom: 60px; 
+}
+
+.todo-list h2 {
+  margin-bottom: 10px;
+}
+
+.todo-list ul {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.todo-list li {
+  margin-bottom: 5px;
+}
+
+.todo-list input[type="text"],
+.todo-list button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.todo-list input[type="text"] {
+  width: calc(70% - 20px);
+}
+
+.todo-list button {
+  background-color: transparent;
+  color: #222222;
+  cursor: pointer;
+}
+
+.todo-list button:hover {
+  text-decoration: underline; 
+}*/
+
+
+.search-container {
+  margin-bottom: 20px;
+  width: 98%;
+}
+
+.search-container input {
+  width: 100%;
+  height: 35px;
+  padding: 5px 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.search-container p {
+  color: red;
+  margin-top: 5px;
+}
+
+.courses-table {
+  width: 90%;
+  margin: 80px auto;
+}
+
+.courses-table h2 {
+  margin-bottom: 10px;
+}
+
+.courses-table table {
+  width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 40px;
+}
+
+.courses-table table img {
+  width: 20%;
+}
+
+.courses-table th, .courses-table td {
+  border-bottom: 1px solid #000000;
+  padding: 12px;
+  text-align: center;
+}
+
+.courses-table th.rate,
+.courses-table td.rate {
+  text-align: center;
+}
+
+
+.table tbody tr td button {
+  background-color: transparent;
+  border: none;
+  color: #222222;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.table tbody tr td button:hover {
+  text-decoration: underline;
+  transform: scale(1.02);
+  font-weight: 800;
+}
+
+.create-course {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.btn  {
+  width: 30%;
+  height: 45px;
+  background: #000000;
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  font-size: 16px;
+  color: #f0f0f0;
+  
+  font-weight: 600;
+  transition: transform 0.3s;
+}
+
+.btn:hover {
+  transform: scale(0.92);
+}
+
+@media screen and (max-width: 768px) {
+  .chart-cards-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    margin-bottom: 20px;
+  }
+  
+  .app-chart {
+    width: 100%; /* Make the chart take full width */
+    margin-bottom: 60px; /* Add some spacing between the chart and the cards */
+  }
+  
+  .cards-container {
+    width: 100%; /* Make the cards container take full width */
+    margin-right: 280px;
+  }
+  
+
+  .dashboard-card {
+    margin: 0 0 20px; /* Adjusted margin */
+  }
+}

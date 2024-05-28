@@ -1,0 +1,280 @@
+.course-interface {
+  display: grid;
+  grid-template-columns: 25% auto; 
+  grid-template-rows: minmax(0, 1fr); /*take up all available space*/
+  height: 100vh;
+  transition: transform 0.3s ease;
+}
+
+.sidebar {
+  grid-column: 1; /* Sidebar should span the first column */
+  grid-row: 1; /* Sidebar should span the first row */
+  padding: 20px;
+  /*border-right: 2px solid #0288d1;*/
+  box-shadow: 10px 0 10px -5px rgba(0, 0, 0, 0.69);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.hiding {
+  transform: translateX(-100%);
+}
+
+.content-display {
+  grid-column: 2; /* Content should span the second column */
+  grid-row: 1; /* Content should span the first row */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  
+}
+
+.content-display.full-width {
+  grid-column: 1 / span 2; /* Content should take up both columns when full-width */
+  align-items: center;
+}
+
+.toggle-sidebar-btn {
+  position: absolute;
+  right: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #02ace0;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow:  0px 2px 8px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s;
+}
+
+.toggle-sidebar-btn:hover {
+  background-color: #03a1fc;
+}
+
+/* Sidebar Styles */
+.sidebar h3 {
+  font-size: 1.5rem;
+  color: #02ace0;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.sidebar ul li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sidebar ul li .test li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+
+.sidebar ul li .test li:hover {
+  transform: scale(1.01);
+  font-weight: 600;
+}
+
+.iframe-container {
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Aspect ratio (16:9) */
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+}
+
+
+/* Content Display Styles */
+.content-display h2 {
+  font-size: 2rem;
+  color: #02ace0;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.content-display p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.content-display ul {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.content-display ul li {
+  margin-bottom: 15px;
+}
+
+.content-display button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin-top: 7px;
+  background-color: #02ace0;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.content-display button:hover {
+  background-color: transparent;
+  color: #02ace0;
+  border: 1px solid #02ace0;
+}
+
+
+.content-display .quizdisplay {
+  width: 70%;
+}
+
+.content-display .quizdisplay p {
+  margin-top: 50px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.content-display .quizdisplay .answer{
+  margin-bottom: 10px;
+  
+}
+
+.content-display .quizdisplay label {
+  font-size: 17px;
+  margin-right: 15px;
+  font-weight: 500;
+  color: #555;
+}
+
+.content-display .quizdisplay input[type="radio"] {
+  transform: scale(1.2);
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* Center the rate-box */
+.rate-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rate-box .center-box h2{
+  text-align: center;
+  color: #02ace0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.rate-box .center-box p{
+  margin-top: 25px;
+  text-align: center;
+}
+
+.rate-box .center-box {
+  position: relative; /* Add this to make position:absolute work correctly */
+  width: 300px;
+  height: 320px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rate-box .center-box .btn { 
+  padding: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 7px;
+  margin-top: 40px;
+  background-color: #02ace0;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.rate-box .center-box .btn:hover {
+  background-color: transparent;
+  color: #02ace0;
+  border: 1px solid #02ace0;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #02ace0;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: transform 0.3s;
+}
+
+.close-button:hover {
+  transform: scale(1.05);
+  font-weight: 800;
+}
+
+
+@media (max-width: 768px) {
+  .course-interface {
+    grid-template-columns: 25% auto; /* Use two columns for larger screens */
+  }
+
+  .sidebar h3 {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    margin-bottom: 5px;
+
+  }
+  
+  .sidebar ul li {
+    cursor: pointer;
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+  }
+  
+  .sidebar ul li .test li {
+    cursor: pointer;
+    margin-bottom: 3px;
+  }
+  
+}

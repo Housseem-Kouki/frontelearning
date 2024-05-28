@@ -1,0 +1,149 @@
+<app-navhome></app-navhome>
+<div class="container">
+  <!-- Cards and Graphs -->
+  <div class="chart-cards-container">
+    <!-- Graph-All Component -->
+    <app-graph-all class="app-chart"></app-graph-all>
+
+    <!-- Cards for Instructors, Learners, and Courses -->
+    <div class="cards-container">
+      <div class="dashboard-card">
+        <h2>Instructors</h2>
+        <p>{{ instructorCount }}</p>
+      </div>
+      <div class="dashboard-card">
+        <h2>Learners</h2>
+        <p>{{ learnerCount }}</p>
+      </div>
+      <div class="dashboard-card">
+        <h2>Courses</h2>
+        <p>{{ courseCount }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons for Managing Learners, Courses, and Instructors -->
+  <div class="manage-buttons">
+    <button class="btn manage-learners" (click)="toggleTable('learners')">Manage Learners</button>
+    <button class="btn manage-courses" (click)="toggleTable('courses')">Course Administration</button>
+    <button class="btn manage-instructors" (click)="toggleTable('instructors')">Manage Instructors</button>
+  </div>
+
+  <!-- Learners Table -->
+  <div class="table-container" *ngIf="activeTable === 'learners'">
+    <h2>Learners</h2>
+    <div class="search-container">
+      <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="filterData()">
+      <p *ngIf="searchMessage">{{ searchMessage }}</p>
+    </div>
+    <table class="table">
+      <!-- Table headers -->
+      <thead>
+        <tr>
+          <th>Learner ID</th>
+          <th>Full Name</th>
+          <th>Phone Number</th>
+          <th>Status</th>
+          <th>Delete</th>
+          <th>Suspend</th>
+          <th>Reactivate</th>
+        </tr>
+      </thead>
+      <!-- Table data -->
+      <tbody>
+        <tr *ngFor="let learner of realLearners">
+          <td>{{ learner.userId }}</td>
+          <td>{{ learner.firstName }} {{ learner.lastName }}</td>
+          <td>{{ learner.phoneNumber }}</td>
+          <td>
+            <span [ngClass]="learner.status ? 'status-active' : 'status-inactive'"></span>
+          </td>
+          <td><button (click)="deleteLearner(learner.userId)">click</button></td>
+          <td><button (click)="suspendLearner(learner.userId)">click</button></td>
+          <td><button (click)="reactivateLearner(learner.userId)">click</button></td>
+
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Courses Table -->
+  <div class="table-container" *ngIf="activeTable === 'courses'">
+    <h2>Courses</h2>
+    <div class="search-container">
+      <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="filterData()">
+      <p *ngIf="searchMessage">{{ searchMessage }}</p>
+    </div>
+    <table class="table">
+      <!-- Table headers -->
+      <thead>
+        <tr>
+          <th>Course ID</th>
+          <th>Name</th>
+          <th>Publish Date</th>
+          <th>Students Enrolled</th>
+          <th>Rate</th>
+          <th>Status</th>
+          <th>Hide</th>
+          <th>Reveal</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <!-- Table data -->
+      <tbody>
+        <tr *ngFor="let course of realCourses">
+          <td>{{ course.courseId }}</td>
+          <td>{{ course.courseTitle }}</td>
+          <td>{{ course.coursePubDate | date }}</td>
+          <td>{{ course.studentsEnrolled }}</td>
+          <td><app-star-rating [rating]="course.rate"></app-star-rating></td>
+          <td>
+            <span [ngClass]="course.status ? 'status-active' : 'status-inactive'"></span>
+          </td> 
+          <td><button (click)="hideCourse(course.courseId)">click</button></td>
+          <td><button (click)="revealCourse(course.courseId)">click</button></td>
+          <td><button (click)="deleteCourse(course.courseId)">click</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Instructors Table -->
+  <div class="table-container" *ngIf="activeTable === 'instructors'">
+    <h2>Instructors</h2>
+    <div class="search-container">
+      <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="filterData()">
+      <p *ngIf="searchMessage">{{ searchMessage }}</p>
+    </div>
+    <table class="table">
+      <!-- Table headers -->
+      <thead>
+        <tr>
+          <th>Instructor ID</th>
+          <th>Full Name</th>
+          <th>Phone Number</th>
+          <th>Status</th>
+          <th>Delete</th>
+          <th>Suspend</th>
+          <th>Reactivate</th>
+        </tr>
+      </thead>
+      <!-- Table data -->
+      <tbody>
+        <tr *ngFor="let instructor of realInstructors">
+          <td>{{ instructor.userId }}</td>
+          <td>{{ instructor.firstName }} {{ instructor.lastName }}</td>
+          <td>{{ instructor.phoneNumber }}</td>
+          <td>
+            <span [ngClass]="instructor.status ? 'status-active' : 'status-inactive'"></span>
+          </td>
+          <td><button (click)="deleteInstructor(instructor.userId)">click</button></td>
+          <td><button (click)="suspendInstructor(instructor.userId)">click</button></td>
+          <td><button (click)="reactivateInstructor(instructor.userId)">click</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-footer></app-footer>

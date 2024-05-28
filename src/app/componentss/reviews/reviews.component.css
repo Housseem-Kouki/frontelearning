@@ -1,0 +1,89 @@
+.cont {
+    text-align: center;
+    margin-top: 20px;
+    background-color: #fcba03;
+    padding: 100px;
+    box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.69);
+  }
+  
+  .feedback-container {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border-radius: 40px;
+    padding: 90px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .feedback {
+    margin-bottom: 20px;
+  }
+  
+  .learner-photo {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc; /* Placeholder color */
+    border-radius: 50%; /* Make it round */
+    margin: 0 auto;
+    
+  }
+  
+  .learner-name {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .feedback-text {
+    margin-top: 10px;
+  }
+  
+  .next-btn {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: #fcba03;
+    border: 2px solid #fcba03;
+    font-weight: 800;
+    font-size: 17px;
+    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px;
+  }
+  
+  .next-btn:hover {
+    transform: scale(1.1);
+    background-color: #fcba03;
+    color: #ffff;
+    border: none;
+  }
+  
+  /* Responsive Adjustments */
+  @media screen and (max-width: 768px) {
+    .feedback-container {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .learner-photo {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .learner-name {
+      font-size: 1rem;
+    }
+  
+    .feedback-text {
+      font-size: 0.9rem;
+    }
+  
+    .next-btn {
+      padding: 6px 12px;
+    }
+  }
+  

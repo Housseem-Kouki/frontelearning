@@ -1,0 +1,68 @@
+<app-navhome></app-navhome>
+<div class="container">
+  <div class="profile-container">
+    <div class="profile-photo">
+      <!-- Display profile photo here -->
+      <img src="assets/imagecourse.jpg" alt="Profile Photo">
+      <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+      <button (click)="fileInput.click()">Edit Photo</button>
+
+      
+    </div>
+  
+    <div class="profile-details">
+      <div class="info-row">
+        <div class="info">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" [(ngModel)]="currentUser.firstName" [disabled]="!isEditMode">
+        </div>
+        <div class="info">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" [(ngModel)]="currentUser.lastName" [disabled]="!isEditMode">
+        </div>
+      </div>
+  
+      <div class="info-row">
+        <div class="info">
+          <label for="email">Email:</label>
+          <input type="email" id="email" [(ngModel)]="currentUser.email" [disabled]="!isEditMode">
+        </div>
+        <div class="info">
+          <label for="birthdate">Birthdate:</label>
+          <input type="date" id="birthdate" [(ngModel)]="currentUser.birthdate" [disabled]="!isEditMode">
+        </div>
+      </div>
+  
+      <div class="info-row">
+        <div class="info">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="text" id="phoneNumber" [(ngModel)]="currentUser.phoneNumber" [disabled]="!isEditMode">
+        </div>
+        <div class="info">
+          <label for="country">Country:</label>
+          <input type="text" id="country" [(ngModel)]="currentUser.country" [disabled]="!isEditMode">
+        </div>
+      </div>
+  
+      <div class="info-row">
+        <div class="info">
+          <label for="location">Location:</label>
+          <input type="text" id="location" [(ngModel)]="currentUser.location" [disabled]="!isEditMode">
+        </div>
+        <div class="info">
+          <label for="profession">Role:</label>
+          <input type="text" id="profession" [(ngModel)]="currentUser.profession" [disabled]="!isEditMode">
+        </div>
+        
+      </div>
+  
+      <div class="profile-actions">
+        <button *ngIf="!isEditMode" (click)="editMode()">Edit Profile</button>
+        <button *ngIf="!isEditMode" (click)="changePassword()">Change Password</button>
+        <button *ngIf="isEditMode" (click)="saveChanges()">Save</button>
+        <button *ngIf="isEditMode" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

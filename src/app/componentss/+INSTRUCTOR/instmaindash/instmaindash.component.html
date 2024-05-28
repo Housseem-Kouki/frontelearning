@@ -1,0 +1,70 @@
+<app-navhome></app-navhome>
+<div class="container">
+  <div class="chart-cards-container">
+    <app-graph-learnerpercourse class="app-chart"></app-graph-learnerpercourse>
+    <div class="cards-container">
+      <div class="dashboard-card">
+        <h2>Courses</h2>
+        <p>{{ courseCount }}</p>
+      </div>
+      <div class="dashboard-card">
+        <h2>Students</h2>
+        <p>{{ studentCount }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="todo-list-container">
+    <div class="todo-list">
+      <h2>To Do List</h2>
+      <ul>
+        <li *ngFor="let todo of todos; let i = index">
+          <input type="checkbox" [(ngModel)]="todo.completed"> {{ todo.task }}
+          <button (click)="deleteTodo(i)">Delete</button>
+        </li>
+      </ul>
+      <input type="text" placeholder="Add a new task" [(ngModel)]="newTodo">
+      <button (click)="addTodo()">Add</button>
+    </div>
+  </div>-->
+
+  <div class="courses-table">
+    <h2>My Courses</h2>
+    <div class="search-container">
+      <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="filterData()">
+      <p *ngIf="searchMessage">{{ searchMessage }}</p>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="img">Image</th>
+          <th>Name</th>
+          <th>Published In</th>
+          <th>Students Enrolled</th>
+          <th>Rate</th> 
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of coursesReal">
+          <td><img [src]="'http://localhost:9402/uploads/' + course.fileName" alt="Course Image"></td>
+          <td>{{ course.courseTitle }}</td>
+          <td>{{ course.coursePubDate | date }}</td>
+          <td>{{ course.studentsEnrolled }}</td>
+          <td class="rate">
+            <app-star-rating [rating]="course.rate"></app-star-rating>
+          </td>
+          <td><button (click)="navigateToUpdateCourse()">Click</button></td>
+          <td><button (click)="deleteCourse(course.courseId)">Click</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="create-course">
+    <button class="btn" (click)="addCourse()">Add a course</button>
+  </div>
+
+</div>
+<app-footer></app-footer>
