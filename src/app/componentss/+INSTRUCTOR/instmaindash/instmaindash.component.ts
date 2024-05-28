@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Course } from '../../../shared/model/Course';
 import { CourseService } from '../../../course.service';
 import { error } from 'console';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-instmaindash',
@@ -47,26 +48,44 @@ export class InstMainDashComponent implements OnInit {
   ];
   courseInterval: any;
   studentInterval: any;
-
+  totalStudents: number = 0;
   constructor(private router: Router , private courseService : CourseService) { }
-
+  totalStudentsEnrolled :number= 0;
+  totalCourses :number= 0;
   ngOnInit(): void {
+    // Initialize totalStudentsEnrolled
     this.startCounters();
     this.originalCourses = [...this.courses];
-    this.courseService.getAllCoursesByTeacher(Number(localStorage.getItem('currentUserId'))).subscribe(
-      data=>{this.coursesReal = data , this.coursesReal.forEach(course =>{
-        this.courseService.getNumberOfStudents(course.courseId).subscribe(
-          enrolled => {course.studentsEnrolled = enrolled, console.log("student enrolled",enrolled)},
-          error => console.log(`error fetching students enrolled for course ${course.courseId}`, error)
+    this.courseService.getAllCoursesByTeacher(Number(localStorage.getItem('currentUserId')))
+      .subscribe(
+        data => {
+          this.coursesReal = data;
+          this.totalCourses = this.coursesReal.length;
 
-        );
-      })},
-      error =>{}
+          // Create an array to store all the HTTP requests for fetching enrolled students
+          const requests = this.coursesReal.map(course => this.courseService.getNumberOfStudents(course.courseId));
+
+          // Wait for all requests to complete using forkJoin
+          forkJoin(requests).subscribe(
+            (enrolledCounts: number[]) => {
+              let tempTotalStudentsEnrolled = 0;
+              
+              // Update each course with its enrolled count and accumulate the total
+              enrolledCounts.forEach((count, index) => {
+                this.coursesReal[index].studentsEnrolled = count;
+                tempTotalStudentsEnrolled += count;
+              });
+
+              // Update the totalStudentsEnrolled after all requests complete
+              this.totalStudentsEnrolled = tempTotalStudentsEnrolled;
+
+            },
+            error => console.log("Error fetching enrolled counts for courses", error)
           );
-
-   
-  }
-
+        },
+        error => console.log("Error fetching courses", error)
+      );
+}
   
 
   filterData() {
@@ -91,7 +110,7 @@ export class InstMainDashComponent implements OnInit {
 
   startCounters() {
     this.courseInterval = setInterval(() => {
-      const targetCourseCount = 2;
+      const targetCourseCount = this.totalCourses;
       if (this.courseCount < targetCourseCount) {
         this.courseCount++;
       } else {
@@ -100,7 +119,7 @@ export class InstMainDashComponent implements OnInit {
     }, 100);
 
     this.studentInterval = setInterval(() => {
-      const targetStudentCount = 35;
+      const targetStudentCount = this.totalStudentsEnrolled;
       if (this.studentCount < targetStudentCount) {
         this.studentCount++;
       } else {

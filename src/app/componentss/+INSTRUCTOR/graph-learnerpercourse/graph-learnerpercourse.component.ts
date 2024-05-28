@@ -1,45 +1,69 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { forkJoin } from 'rxjs';
+import { CourseService } from '../../../course.service';
+ // Assurez-vous de l'importer correctement
 
 @Component({
   selector: 'app-graph-learnerpercourse',
   templateUrl: './graph-learnerpercourse.component.html',
-  styleUrl: './graph-learnerpercourse.component.css'
+  styleUrls: ['./graph-learnerpercourse.component.css']
 })
-export class GraphLearnerpercourseComponent {
+export class GraphLearnerpercourseComponent implements OnChanges {
+  @Input() courses: any[] = [];
   chart: any;
 
-  constructor() { }
+  constructor(private courseService: CourseService) {}
 
-  ngOnInit(): void {
-    this.chart = new Chart('canvas', {
-      type: 'line',
-      data: {
-        labels: ['Course 1', 'Course 2', 'Course 3', 'Course 4'], // Course names
-        datasets: [{
-          label: 'Number of Learners',
-          data: [7, 13, 9, 36], // Number of learners per course
-          backgroundColor: [
-            'rgba(153, 0, 0, 0.2)',   // Dark red
-            'rgba(0, 51, 102, 0.2)',  // Dark blue
-            'rgba(128, 128, 0, 0.2)', // Dark yellow
-          ],
-          borderColor: [
-            'rgba(153, 0, 0, 1)',     // Dark red
-            'rgba(0, 51, 102, 1)',    // Dark blue
-            'rgba(128, 128, 0, 1)',   // Dark yellow
-          ],
-          borderWidth: 1.5
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['courses'] && this.courses.length > 0) {
+      this.updateChart();
+    }
+  }
+
+  updateChart(): void {
+    const labels: string[] = [];
+    const data: number[] = [];
+
+    // Array to store observables for fetching enrolled students count
+    const observables = this.courses.map(course => this.courseService.getNumberOfStudents(course.courseId));
+
+    forkJoin(observables).subscribe(
+      (enrollments: number[]) => {
+        this.courses.forEach((course, index) => {
+          labels.push(course.courseTitle); // Push course title as label
+          data.push(enrollments[index]); // Push enrollment count from observable result
+        });
+
+        // Update or create the chart
+        if (this.chart) {
+          this.chart.destroy();
         }
+        
+        this.chart = new Chart('canvas', {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Number of Learners',
+              data: data,
+              backgroundColor: 'rgba(153, 0, 0, 0.2)',
+              borderColor: 'rgba(153, 0, 0, 1)',
+              borderWidth: 1.5
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      },
+      error => {
+        console.error('Error fetching enrollment counts:', error);
       }
-    });
+    );
   }
 }
-

@@ -5,5 +5,6 @@ export class User {
   role?: number;
   email?: string;
   password?: string;
+  status?:boolean;
   }
   

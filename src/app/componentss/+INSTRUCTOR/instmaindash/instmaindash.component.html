@@ -1,7 +1,7 @@
 <app-navhome></app-navhome>
 <div class="container">
   <div class="chart-cards-container">
-    <app-graph-learnerpercourse class="app-chart"></app-graph-learnerpercourse>
+    <app-graph-learnerpercourse [courses]="coursesReal" class="app-chart"></app-graph-learnerpercourse>
     <div class="cards-container">
       <div class="dashboard-card">
         <h2>Courses</h2>
@@ -13,6 +13,9 @@
       </div>
     </div>
   </div>
+
+  
+
 
   <!--<div class="todo-list-container">
     <div class="todo-list">
@@ -53,7 +56,7 @@
           <td>{{ course.coursePubDate | date }}</td>
           <td>{{ course.studentsEnrolled }}</td>
           <td class="rate">
-            <app-star-rating [rating]="course.rate"></app-star-rating>
+            <app-star-rating [rating]="course.totalRatings"></app-star-rating>
           </td>
           <td><button (click)="navigateToUpdateCourse()">Click</button></td>
           <td><button (click)="deleteCourse(course.courseId)">Click</button></td>

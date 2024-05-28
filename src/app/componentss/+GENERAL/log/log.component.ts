@@ -27,12 +27,23 @@ userRole!: string;
   login(): void {
     this.authService.login(this.loginData).subscribe(
       (data) => {
-        console.log("login data :", data);
+        if(data.status == false){
+          Swal.fire({
+           title: 'Account Blocked',
+           text: 'Account Blocked',
+           icon: 'error',
+           confirmButtonText: 'OK',
+           allowOutsideClick: false
+         }).then(() => {
+           this.authService.logoutUser();
+         });
+          return;
+           
+       }
         localStorage.setItem("token", data.token);
         this.authService.getUserRole2(data.email).subscribe(
           (user) => {
             this.currentUser = user;
-            console.log()
            // localStorage.setItem("token", data.token);
            
             if (user.userId !== undefined) {
