@@ -71,6 +71,9 @@ export class RankingsComponent implements OnInit {
           console.log("instructor.averageCourseRating ",instructor.averageCourseRating)
           instructor.score = (0.4 * instructor.coursesAsTeacher.length) + (0.4 * instructor.learnerEngagement) + (0.2 * instructor.averageCourseRating);
         });
+
+           // Trier les instructeurs par score décroissant
+      this.realInstructors.sort((a, b) => b.score - a.score);
       },
       error => {
         console.log("error fetching users ", error);
